@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info:
+  title: API de Autenticação
+  description: Especificação OpenAPI para a API de autenticação
+  version: v1.0.0
+servers:
+  - url: https://dev-esfonyw6hc88jqw5.us.auth0.com
+    description: Servidor de Autenticação Auth0
+paths:
+  /authorize:
+    get:
+      operationId: authorizeUser
+      summary: Redireciona para a página de login do Auth0
+      responses:
+        '302':
+          description: Redireciona para o Auth0
+  /callback:
+    get:
+      operationId: handleCallback
+      summary: Manipula a resposta do Auth0 após a autenticação
+      responses:
+        '200':
+          description: Resposta de Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Autenticação bem-sucedida!"
+components:
+  schemas: {}
